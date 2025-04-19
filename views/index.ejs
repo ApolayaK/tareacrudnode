@@ -49,9 +49,9 @@
                   <a href="/edit/<%= empleado.id %>" class="btn btn-sm btn-warning">
                     <i class="bi bi-pencil-square"></i>
                   </a>
-                  <a href="/delete/<%= empleado.id %>" class="btn btn-sm btn-danger">
+                  <a href="/delete/<%= empleado.id %>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
                     <i class="bi bi-trash-fill"></i>
-                  </a>
+                  </a>                  
                 </td>
               </tr>                 
               <% }) %>              

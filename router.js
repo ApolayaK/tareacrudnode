@@ -24,3 +24,16 @@ const crud = require('./controllers/crud');
 router.post('/save', crud.save);
 
 module.exports = router;
+
+// Eliminar empleado
+router.get('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    conexion.query('DELETE FROM empleados WHERE id = ?', [id], (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect('/');
+      }
+    });
+  });
+  
