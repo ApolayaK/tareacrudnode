@@ -19,13 +19,13 @@ router.get('/create', (req, res) => {
   res.render('create');
 });
 
-// Ruta para guardar nuevos empleados
+// SAVE
 const crud = require('./controllers/crud');
 router.post('/save', crud.save);
 
 module.exports = router;
 
-// Eliminar empleado
+// DELETE
 router.get('/delete/:id', (req, res) => {
     const id = req.params.id;
     conexion.query('DELETE FROM empleados WHERE id = ?', [id], (error, results) => {
@@ -36,4 +36,18 @@ router.get('/delete/:id', (req, res) => {
       }
     });
   });
+
+  // Mostrar EDIT
+router.get('/edit/:id', (req, res) => {
+    const id = req.params.id;
+    conexion.query('SELECT * FROM empleados WHERE id = ?', [id], (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.render('edit', { empleado: results[0] });
+      }
+    });
+  });
   
+  //editar
+  router.post('/update', crud.update);

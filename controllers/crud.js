@@ -62,3 +62,18 @@ exports.update = (req, res) => {
     }
   );
 };
+
+
+// Eliminar empleado
+exports.delete = (req, res) => {
+    const id = req.params.id;
+  
+    conexion.query('DELETE FROM empleados WHERE id = ?', [id], (error, results) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.redirect('/');
+      }
+    });
+  };
+  
