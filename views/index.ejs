@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Empleados</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Gestión de Empleados</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container mt-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Lista de empleados</h5>
+          <a href="/create" class="btn btn-sm btn-success">Registrar nuevo</a>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead class="table-dark text-center">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Fecha Ingreso</th>
+                <th>Faltas</th>
+                <th>Cargo</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% registros.forEach(empleado => { %>
+                <tr>
+                  <td><%= empleado.id %></td>
+                  <td><%= empleado.nombre %></td>
+                  <td><%= empleado.direccion %></td>
+                  <td><%= empleado.telefono %></td>
+                  <td><%= empleado.fecha_ingreso.toISOString().split('T')[0] %></td>
+                  <td><%= empleado.faltas %></td>
+                  <td><%= empleado.cargo %></td>
+                  <td class="text-center">
+                    <a href="./edit/<%= empleado.id %>" class="btn btn-sm btn-info">Editar</a>
+                    <a href="./delete/<%= empleado.id %>" class="btn btn-sm btn-danger">Eliminar</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center mt-4 mb-2 text-muted">
+    <small>&copy; 2025 Gestión de Empleados</small>
+  </footer>
+</body>
+</html>

@@ -9,7 +9,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); 
 
-//app.use('/', require('./router')); 
+app.use('/', require('./router')); 
 
 app.listen(5000, () => {
   console.log('Servidor ejecutándose en http://localhost:5000');
